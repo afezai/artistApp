@@ -8,6 +8,7 @@ import com.example.mediastore.repository.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,7 +32,7 @@ public class ArtistService {
         return ArtistMapper.INSTANCE.artistToArtistDTO(artistEntity);
     }
 
-    public List<Object[]> getMaxYears() {
+    public List<StatDTO> getMaxYears() {
         return artistRepository.findArtistsWithMaxConsecutiveYears();
     }
 }

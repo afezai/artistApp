@@ -1,6 +1,7 @@
 package com.example.mediastore.controller;
 
 import com.example.mediastore.dto.ArtistDTO;
+import com.example.mediastore.dto.StatDTO;
 import com.example.mediastore.service.ArtistService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -32,9 +33,9 @@ public class StatisticsApiController implements StatisticsApi {
         this.artistService = artistService;
     }
 
-    public ResponseEntity<List<Object[]>> statisticsMaxConsecutiveYearsGet() {
+    public ResponseEntity<List<StatDTO>> statisticsMaxConsecutiveYearsGet() {
         String accept = request.getHeader("Accept");
-        List<Object[]> artists = artistService.getMaxYears();
+        List<StatDTO> artists = artistService.getMaxYears();
         return new ResponseEntity<>(artists, HttpStatus.OK);
     }
 

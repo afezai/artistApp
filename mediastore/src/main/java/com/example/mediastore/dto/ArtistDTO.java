@@ -15,6 +15,9 @@ public class ArtistDTO {
         this.name = name;
     }
 
+    public ArtistDTO(Integer artistId, String artistName, Integer maxConsecutiveYears) {
+    }
+
     public Integer getArtistId() {
         return artistId;
     }

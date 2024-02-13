@@ -5,6 +5,13 @@ public class StatDTO {
 
     private String name;
 
+    public StatDTO(Integer artistId, String name, Integer maxyears) {
+        this.artistId = artistId;
+        this.name = name;
+        this.maxyears = maxyears;
+    }
+
+
     public Integer getArtistId() {
         return artistId;
     }

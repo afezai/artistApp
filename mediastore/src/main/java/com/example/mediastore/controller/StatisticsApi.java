@@ -1,6 +1,7 @@
 
 package com.example.mediastore.controller;
 
+import com.example.mediastore.dto.StatDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,7 @@ public interface StatisticsApi {
     @RequestMapping(value = "api/statistics/maxConsecutiveYears",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<Object[]>> statisticsMaxConsecutiveYearsGet();
+    ResponseEntity<List<StatDTO>> statisticsMaxConsecutiveYearsGet();
 
 }
 
