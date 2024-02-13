@@ -7,14 +7,14 @@ import jakarta.persistence.Id;
 public class Genre {
 
     @Id
-    private Integer genreId;
+    private Integer genre_id;
 
     public Integer getGenreId() {
-        return genreId;
+        return genre_id;
     }
 
     public void setGenreId(Integer genreId) {
-        this.genreId = genreId;
+        this.genre_id = genreId;
     }
 
     public String getName() {

@@ -24,7 +24,7 @@ public class Track {
 
     @ManyToOne
     @JoinColumn(name = "genre_id")
-    private Genre genre;
+    private Genre genre_id;
 
     public Integer getTrack_id() {
         return track_id;
@@ -58,12 +58,12 @@ public class Track {
         this.mediaType = mediaType;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public Genre getGenre_id() {
+        return genre_id;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setGenre_id(Genre genre) {
+        this.genre_id = genre;
     }
 
     public String getComposer() {

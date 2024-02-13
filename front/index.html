@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artist Albums</title>
-    <!-- Include the HTMX library -->
-    <script src="node_modules/htmx.org/dist/htmx.js"></script>
+    <title>Artist Details</title>
+    <script src="node_modules/htmx/htmx.js"></script>
 </head>
+
 <body>
+    <h1 id="artistName"></h1>
 
-<div id="artist-details" hx-get="/api/artists/{artistId}/albums">
-    <!-- Artist details will be inserted here dynamically -->
-</div>
+    <table id="albumDetails">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Total Duration (seconds)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Album details will be inserted here dynamically -->
+        </tbody>
+    </table>
 
-<script>
-    // JavaScript code for handling htmx events or custom logic
-</script>
+    <script>
+        // Function to fetch and display artist details
+        function loadArtistDetails(artistId) {
+            fetch(`http://localhost:8080/api/artists/${artistId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('name').innerText = data[0].artistName;
 
+                    const albumDetailsTable = document.getElementById('album').getElementsByTagName('tbody')[0];
+                    albumDetailsTable.innerHTML = '';
+
+                    data.forEach(detail => {
+                        const row = albumDetailsTable.insertRow();
+                        row.insertCell(0).innerText = detail[1];  // Album Title
+                        row.insertCell(1).innerText = detail[2];  // Genre
+                        row.insertCell(2).innerText = detail[3];  // Total Duration (seconds)
+                    });
+                });
+        }
+
+        // Initial load (replace '1' with the actual artist ID)
+        loadArtistDetails(1);
+
+        // You can trigger this function with Htmx on user actions, etc.
+    </script>
 </body>
+
 </html>

@@ -1,11 +1,10 @@
 package com.example.mediastore.controller;
 
 import com.example.mediastore.dto.ArtistDTO;
-import com.example.mediastore.repository.ArtistRepository;
+import com.example.mediastore.dto.ArtistInfoDTO;
 import com.example.mediastore.service.ArtistService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.websocket.server.PathParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -31,10 +30,16 @@ public class ArtistsApiController implements ArtistsApi {
         this.artistService = artistService;
     }
 
-    public ResponseEntity<List<ArtistDTO>> getAllArtists(@PathParam("artistId") Integer artistId) {
+    public ResponseEntity<List<ArtistDTO>> getAllArtists() {
         String accept = request.getHeader("Accept");
         List<ArtistDTO> artistDTOs = artistService.getAllArtists();
         return new ResponseEntity<>(artistDTOs, HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<List<ArtistInfoDTO>> getArtistById(Integer artistId) {
+        List<ArtistInfoDTO> artistInfoDTOS = artistService.getArtistById(artistId);
+        return new ResponseEntity<>(artistInfoDTOS, HttpStatus.OK);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.example.mediastore.service;
 
 import com.example.mediastore.dto.ArtistDTO;
+import com.example.mediastore.dto.ArtistInfoDTO;
 import com.example.mediastore.dto.StatDTO;
 import com.example.mediastore.mapper.ArtistMapper;
 import com.example.mediastore.model.Artist;
@@ -27,9 +28,14 @@ public class ArtistService {
         return ArtistMapper.INSTANCE.artistToDTOs(artists);
     }
 
-    public ArtistDTO getArtistById(Integer artistId) {
-        Artist artistEntity = artistRepository.findById(artistId).orElse(null);
-        return ArtistMapper.INSTANCE.artistToArtistDTO(artistEntity);
+    public List<ArtistInfoDTO> getArtistById(Integer artistId) {
+        List<Object[]> result = artistRepository.findArtistAndAlbumDetails(artistId);
+        List<ArtistInfoDTO> finalres = new ArrayList<ArtistInfoDTO>();
+        for (Object[] row : result) {
+            finalres.add(new ArtistInfoDTO((String) row[0], (String) row[1], (String) row[2], (Long) row[3]));
+        }
+
+        return finalres;
     }
 
     public List<StatDTO> getMaxYears() {
