@@ -1,4 +1,4 @@
-# Your Spring Boot Application
+# Media Store
 
 This is a sample Spring Boot application to manage artists and their albums.
 
@@ -44,8 +44,8 @@ Make sure you have the following installed on your machine:
 
 The application will be accessible at [http://localhost:8080](http://localhost:8080).
 
-## Usage
+## FRONT
 
-Describe how to use or interact with your application. Include any default credentials, API endpoints, or other relevant information.
+Open the `index.html`  with chrome or mozzilla browser.
 
 
